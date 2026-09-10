@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paint Quote Request — Bello Automotive Services</title>
+  <meta name="description" content="Request a custom paint quote from Bello Automotive Services. Tell us about your bike, the parts, and the look you're after.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-name">Bello<span class="gold"> · </span>Auto</span>
+        <span class="brand-tag">Automotive Services</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="quote.html" class="nav-cta">Paint Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
+        <span class="eyebrow">Paint Quote Request</span>
+        <h2>Tell us about your project</h2>
+        <p style="margin-left:auto;margin-right:auto;">
+          Fill this out and it turns into a clean request you can email, copy, or text back to the shop.
+          Photos get attached separately after you send it.
+        </p>
+      </div>
+
+      <form class="form-wrap" id="quoteForm" novalidate>
+
+        <!-- ============ Customer info ============ -->
+        <div class="form-card">
+          <h2>Customer Info</h2>
+          <div class="field-row">
+            <div class="field">
+              <label for="custName">Name <span class="req">*</span></label>
+              <input type="text" id="custName" name="custName" placeholder="Full name" required>
+            </div>
+            <div class="field">
+              <label for="custPhone">Phone <span class="req">*</span></label>
+              <input type="tel" id="custPhone" name="custPhone" placeholder="Phone number" required>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="custEmail">Email</label>
+              <input type="email" id="custEmail" name="custEmail" placeholder="Email address">
+            </div>
+            <div class="field">
+              <label for="prefContact">Preferred contact</label>
+              <select id="prefContact" name="prefContact">
+                <option>Text</option>
+                <option>Call</option>
+                <option>Email</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="vehicle">Motorcycle year / make / model</label>
+            <input type="text" id="vehicle" name="vehicle" placeholder="e.g. 2021 Harley Street Glide">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="timeline">Timeline</label>
+              <select id="timeline" name="timeline">
+                <option>No rush</option>
+                <option>Within a couple months</option>
+                <option>Within a month</option>
+                <option>Within 2 weeks</option>
+                <option>ASAP</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="deadline">Deadline date, if any</label>
+              <input type="date" id="deadline" name="deadline">
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ Paint job details ============ -->
+        <div class="form-card">
+          <h2>Paint Job Details</h2>
+          <div class="field-row">
+            <div class="field">
+              <label for="paintStyle">Paint style</label>
+              <select id="paintStyle" name="paintStyle">
+                <option>Solid color</option>
+                <option>Metallic</option>
+                <option>Pearl</option>
+                <option>Candy</option>
+                <option>Metalflake</option>
+                <option>Color-shift / chameleon</option>
+                <option>Custom graphics</option>
+                <option>Factory color match</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="finish">Finish</label>
+              <select id="finish" name="finish">
+                <option>Gloss</option>
+                <option>Satin</option>
+                <option>Matte</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="designIdea">Color / design idea</label>
+            <textarea id="designIdea" name="designIdea" placeholder="Example: gloss black, color match to factory, flames, pinstripe, logo, etc."></textarea>
+          </div>
+          <div class="field">
+            <label for="damage">Damage, dents, cracks, old paint, rust, or bodywork needed?</label>
+            <textarea id="damage" name="damage" placeholder="Describe anything that needs repair or prep."></textarea>
+          </div>
+        </div>
+
+        <!-- ============ Parts being painted ============ -->
+        <div class="form-card">
+          <h2>Parts Being Painted</h2>
+          <p class="form-hint">Add each part separately so the shop can price it accurately.</p>
+          <div id="partList"></div>
+          <button type="button" class="btn btn-primary btn-sm" id="addPart">+ Add Part</button>
+        </div>
+
+        <!-- ============ Photos / notes ============ -->
+        <div class="form-card">
+          <h2>Photos / Notes</h2>
+          <div class="field">
+            <label>Photo note</label>
+            <textarea class="request-preview" style="min-height:90px;" readonly>Please attach clear photos of each part, close-ups of damage, and a photo of the motorcycle if possible.</textarea>
+          </div>
+          <div class="field">
+            <label for="extraNotes">Extra notes</label>
+            <textarea id="extraNotes" name="extraNotes" placeholder="Anything else the shop should know?"></textarea>
+          </div>
+        </div>
+
+        <!-- ============ Send request back ============ -->
+        <div class="form-card">
+          <h2>Send Request</h2>
+          <p class="form-hint">
+            This builds a clean summary of your request. Email it to the shop, copy it to text,
+            or download it as a file — then attach your photos to the message.
+          </p>
+          <div class="field">
+            <label for="generated">Generated request</label>
+            <textarea class="request-preview" id="generated" readonly></textarea>
+          </div>
+          <div class="send-actions">
+            <button type="button" class="btn btn-green" id="emailBtn">Email Request to Shop</button>
+            <button type="button" class="btn btn-ghost" id="copyBtn">Copy Request</button>
+            <button type="button" class="btn btn-ghost" id="downloadBtn">Download Request File</button>
+          </div>
+          <p class="form-note" id="formStatus" role="status"></p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Bello Automotive Services</h4>
+          <p>Custom paint, bodywork, and restoration for motorcycles and vehicles.
+             <!-- PLACEHOLDER: short shop blurb --></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="quote.html">Paint Quote Request</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li> <!-- PLACEHOLDER: phone --> <a href="#">(555) 012-3456</a></li>
+            <li><a href="mailto:krisfrombelloauto@gmail.com">krisfrombelloauto@gmail.com</a></li>
+            <li> <!-- PLACEHOLDER: address --> Address coming soon</li>
+            <li> <!-- PLACEHOLDER: hours --> Hours: Mon–Fri 9–5</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Bello Automotive Services. All rights reserved.</span>
+        <span>Site under construction — content is placeholder.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/quote.js"></script>
+</body>
+</html>

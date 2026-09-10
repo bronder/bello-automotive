@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Bello Automotive Services</title>
+  <meta name="description" content="Recent custom paint work from Bello Automotive Services — color-shift, candy, flake, graphics, and restorations.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-name">Bello<span class="gold"> · </span>Auto</span>
+        <span class="brand-tag">Automotive Services</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="quote.html" class="nav-cta">Paint Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Our Work</span>
+        <h2>Paint Gallery</h2>
+        <p>Recent jobs out of the shop. Tap any photo to view it full size.
+           <em>More photos coming soon.</em></p>
+      </div>
+
+      <div class="gallery-filters" id="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="colorshift">Color-Shift</button>
+        <button class="filter-btn" data-filter="candy">Candy &amp; Flake</button>
+        <button class="filter-btn" data-filter="graphics">Graphics</button>
+        <button class="filter-btn" data-filter="restoration">Restoration</button>
+      </div>
+
+      <div class="gallery-grid" id="gallery">
+
+        <figure class="gallery-item" data-cat="colorshift graphics">
+          <img src="images/chameleon-fairing-set.jpg" alt="Full color-shift fairing set with honeycomb graphics" loading="lazy">
+          <figcaption><small>Color-Shift · Graphics</small>Full chameleon fairing set with honeycomb layout</figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-cat="candy graphics">
+          <img src="images/candy-copper-tank.jpg" alt="Candy copper tank and fender with silver-leaf graphics" loading="lazy">
+          <figcaption><small>Candy · Pinstripe</small>Candy copper tank &amp; fender with silver-leaf panels</figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-cat="restoration">
+          <img src="images/honda-candy-restore.jpg" alt="Restored vintage Honda tank in candy orange" loading="lazy">
+          <figcaption><small>Restoration</small>Vintage Honda tank — factory candy orange</figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-cat="colorshift graphics">
+          <img src="images/chameleon-lid-detail.jpg" alt="Color-shift saddlebag lid with EVO logo" loading="lazy">
+          <figcaption><small>Color-Shift · Graphics</small>Bagger lid detail — flake, shift, and logo work</figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-cat="colorshift">
+          <img src="images/chameleon-set-detail.jpg" alt="Color-shift fairing set in green and purple" loading="lazy">
+          <figcaption><small>Color-Shift</small>Same set, different light — full color flip</figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-cat="graphics">
+          <img src="images/harley-graphic-lid.jpg" alt="Blue and gray Harley-Davidson lid with geometric graphics" loading="lazy">
+          <figcaption><small>Graphics</small>Custom geometric graphics with number plate</figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-cat="graphics">
+          <img src="images/tour-pak-graphic.jpg" alt="White, silver and red tour pak lid with scalloped graphics" loading="lazy">
+          <figcaption><small>Graphics</small>Scalloped tour-pak lid with airbrushed fades</figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-cat="candy graphics">
+          <img src="images/honeycomb-fender.jpg" alt="Gunmetal rear fender with honeycomb pattern and red tip" loading="lazy">
+          <figcaption><small>Graphics · Flake</small>Honeycomb rear fender with candy red tip</figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-cat="candy graphics">
+          <img src="images/silver-red-tank-set.jpg" alt="Silver and red honeycomb tank and fender set" loading="lazy">
+          <figcaption><small>Graphics</small>Silver &amp; red tank set, fresh off the shelf</figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-cat="graphics">
+          <img src="images/number-one-tank.jpg" alt="Silver tank with number one stars graphic and red fender" loading="lazy">
+          <figcaption><small>Graphics</small>Number-one tank with star field and candy red fender</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+    <img id="lbImg" src="" alt="">
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Bello Automotive Services</h4>
+          <p>Custom paint, bodywork, and restoration for motorcycles and vehicles.
+             <!-- PLACEHOLDER: short shop blurb --></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="quote.html">Paint Quote Request</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li> <!-- PLACEHOLDER: phone --> <a href="#">(555) 012-3456</a></li>
+            <li><a href="mailto:krisfrombelloauto@gmail.com">krisfrombelloauto@gmail.com</a></li>
+            <li> <!-- PLACEHOLDER: address --> Address coming soon</li>
+            <li> <!-- PLACEHOLDER: hours --> Hours: Mon–Fri 9–5</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Bello Automotive Services. All rights reserved.</span>
+        <span>Site under construction — content is placeholder.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Gallery filters
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.gallery-item');
+    filterBtns.forEach(btn => btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      items.forEach(it => {
+        it.style.display = (f === 'all' || it.dataset.cat.includes(f)) ? '' : 'none';
+      });
+    }));
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCaption = document.getElementById('lbCaption');
+    items.forEach(it => it.addEventListener('click', () => {
+      const img = it.querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      const cap = it.querySelector('figcaption');
+      const cat = cap.querySelector('small');
+      const desc = cap.lastChild.textContent.trim();
+      lbCaption.textContent = cat ? cat.textContent.trim() + ' — ' + desc : desc;
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+    }));
+    function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); }
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+  </script>
+</body>
+</html>
