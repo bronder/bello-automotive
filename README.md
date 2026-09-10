@@ -4,6 +4,9 @@ Static site (plain HTML/CSS/JS, no build step) for Bello Automotive Services,
 modeled on the same showcase format as the DC Custom Guitars site: hero,
 gallery of real work, services, intake/quote form, contact.
 
+**Live:** https://bronder.github.io/bello-automotive/ — deploys automatically
+on every push to `main` via [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+
 ## Pages
 
 | Page | Purpose |
