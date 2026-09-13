@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery — Bello Automotive Services</title>
   <meta name="description" content="Recent custom paint work from Bello Automotive Services — color-shift, candy, flake, graphics, and restorations.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gallery — Bello Automotive Services">
+  <meta property="og:description" content="Recent custom paint work — color-shift, candy, flake, graphics, and restorations.">
+  <meta property="og:url" content="https://bellautoservices.com/gallery.html">
+  <meta property="og:image" content="https://bellautoservices.com/images/hero-chameleon-1280.webp">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +18,8 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container nav">
@@ -21,7 +29,7 @@
       </a>
       <nav class="nav-links">
         <a href="index.html">Home</a>
-        <a href="gallery.html" class="active">Gallery</a>
+        <a href="gallery.html" class="active" aria-current="page">Gallery</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
         <a href="quote.html" class="nav-cta">Paint Quote</a>
@@ -29,72 +37,98 @@
     </div>
   </header>
 
+  <main id="main">
+
   <section class="section">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Our Work</span>
-        <h2>Paint Gallery</h2>
+        <h1>Paint Gallery</h1>
         <p>Recent jobs out of the shop. Tap any photo to view it full size.
            <em>More photos coming soon.</em></p>
       </div>
 
       <div class="gallery-filters" id="filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="colorshift">Color-Shift</button>
-        <button class="filter-btn" data-filter="candy">Candy &amp; Flake</button>
-        <button class="filter-btn" data-filter="graphics">Graphics</button>
-        <button class="filter-btn" data-filter="restoration">Restoration</button>
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="colorshift" aria-pressed="false">Color-Shift</button>
+        <button class="filter-btn" data-filter="candy" aria-pressed="false">Candy &amp; Flake</button>
+        <button class="filter-btn" data-filter="graphics" aria-pressed="false">Graphics</button>
+        <button class="filter-btn" data-filter="restoration" aria-pressed="false">Restoration</button>
       </div>
 
       <div class="gallery-grid" id="gallery">
+        <p class="gallery-empty" id="galleryEmpty" hidden>
+          No photos in this category yet — check back soon, or
+          <a href="quote.html">ask us about it</a>.
+        </p>
 
         <figure class="gallery-item" data-cat="colorshift graphics">
-          <img src="images/chameleon-fairing-set.jpg" alt="Full color-shift fairing set with honeycomb graphics" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Color-Shift · Graphics — Full chameleon fairing set with honeycomb layout">
+            <img src="images/chameleon-fairing-set.webp" width="1200" height="1600" alt="Full color-shift fairing set with honeycomb graphics" loading="lazy">
+          </button>
           <figcaption><small>Color-Shift · Graphics</small>Full chameleon fairing set with honeycomb layout</figcaption>
         </figure>
 
         <figure class="gallery-item" data-cat="candy graphics">
-          <img src="images/candy-copper-tank.jpg" alt="Candy copper tank and fender with silver-leaf graphics" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Candy · Pinstripe — Candy copper tank &amp; fender with silver-leaf panels">
+            <img src="images/candy-copper-tank.webp" width="1200" height="1600" alt="Candy copper tank and fender with silver-leaf graphics" loading="lazy">
+          </button>
           <figcaption><small>Candy · Pinstripe</small>Candy copper tank &amp; fender with silver-leaf panels</figcaption>
         </figure>
 
         <figure class="gallery-item" data-cat="restoration">
-          <img src="images/honda-candy-restore.jpg" alt="Restored vintage Honda tank in candy orange" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Restoration — Vintage Honda tank — factory candy orange">
+            <img src="images/honda-candy-restore.webp" width="788" height="1400" alt="Restored vintage Honda tank in candy orange" loading="lazy">
+          </button>
           <figcaption><small>Restoration</small>Vintage Honda tank — factory candy orange</figcaption>
         </figure>
 
         <figure class="gallery-item" data-cat="colorshift graphics">
-          <img src="images/chameleon-lid-detail.jpg" alt="Color-shift saddlebag lid with EVO logo" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Color-Shift · Graphics — Bagger lid detail — flake, shift, and logo work">
+            <img src="images/chameleon-lid-detail.webp" width="1200" height="1600" alt="Color-shift saddlebag lid with EVO logo" loading="lazy">
+          </button>
           <figcaption><small>Color-Shift · Graphics</small>Bagger lid detail — flake, shift, and logo work</figcaption>
         </figure>
 
         <figure class="gallery-item" data-cat="colorshift">
-          <img src="images/chameleon-set-detail.jpg" alt="Color-shift fairing set in green and purple" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Color-Shift — Same set, different light — full color flip">
+            <img src="images/chameleon-set-detail.webp" width="1200" height="1600" alt="Color-shift fairing set in green and purple" loading="lazy">
+          </button>
           <figcaption><small>Color-Shift</small>Same set, different light — full color flip</figcaption>
         </figure>
 
         <figure class="gallery-item" data-cat="graphics">
-          <img src="images/harley-graphic-lid.jpg" alt="Blue and gray Harley-Davidson lid with geometric graphics" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Graphics — Custom geometric graphics with number plate">
+            <img src="images/harley-graphic-lid.webp" width="828" height="1200" alt="Blue and gray Harley-Davidson lid with geometric graphics" loading="lazy">
+          </button>
           <figcaption><small>Graphics</small>Custom geometric graphics with number plate</figcaption>
         </figure>
 
         <figure class="gallery-item" data-cat="graphics">
-          <img src="images/tour-pak-graphic.jpg" alt="White, silver and red tour pak lid with scalloped graphics" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Graphics — Scalloped tour-pak lid with airbrushed fades">
+            <img src="images/tour-pak-graphic.webp" width="1200" height="1600" alt="White, silver and red tour pak lid with scalloped graphics" loading="lazy">
+          </button>
           <figcaption><small>Graphics</small>Scalloped tour-pak lid with airbrushed fades</figcaption>
         </figure>
 
         <figure class="gallery-item" data-cat="candy graphics">
-          <img src="images/honeycomb-fender.jpg" alt="Gunmetal rear fender with honeycomb pattern and red tip" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Graphics · Flake — Honeycomb rear fender with candy red tip">
+            <img src="images/honeycomb-fender.webp" width="900" height="1600" alt="Gunmetal rear fender with honeycomb pattern and red tip" loading="lazy">
+          </button>
           <figcaption><small>Graphics · Flake</small>Honeycomb rear fender with candy red tip</figcaption>
         </figure>
 
         <figure class="gallery-item" data-cat="candy graphics">
-          <img src="images/silver-red-tank-set.jpg" alt="Silver and red honeycomb tank and fender set" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Graphics — Silver &amp; red tank set, fresh off the shelf">
+            <img src="images/silver-red-tank-set.webp" width="900" height="1600" alt="Silver and red honeycomb tank and fender set" loading="lazy">
+          </button>
           <figcaption><small>Graphics</small>Silver &amp; red tank set, fresh off the shelf</figcaption>
         </figure>
 
         <figure class="gallery-item" data-cat="graphics">
-          <img src="images/number-one-tank.jpg" alt="Silver tank with number one stars graphic and red fender" loading="lazy">
+          <button class="gallery-trigger" type="button" data-caption="Graphics — Number-one tank with star field and candy red fender">
+            <img src="images/number-one-tank.webp" width="900" height="1600" alt="Silver tank with number one stars graphic and red fender" loading="lazy">
+          </button>
           <figcaption><small>Graphics</small>Number-one tank with star field and candy red fender</figcaption>
         </figure>
 
@@ -103,22 +137,24 @@
   </section>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
-    <img id="lbImg" src="" alt="">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Close image viewer">&times;</button>
+    <img id="lbImg" alt="">
     <div class="lb-caption" id="lbCaption"></div>
   </div>
+
+  </main>
 
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>Bello Automotive Services</h4>
+          <h3>Bello Automotive Services</h3>
           <p>Custom paint, bodywork, and restoration for motorcycles and vehicles.
              <!-- PLACEHOLDER: short shop blurb --></p>
         </div>
         <div>
-          <h4>Quick Links</h4>
+          <h3>Quick Links</h3>
           <ul>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="services.html">Services</a></li>
@@ -127,9 +163,9 @@
           </ul>
         </div>
         <div>
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <ul>
-            <li> <!-- PLACEHOLDER: phone --> <a href="#">(555) 012-3456</a></li>
+            <li>Phone number coming soon</li>
             <li><a href="mailto:krisfrombelloauto@gmail.com">krisfrombelloauto@gmail.com</a></li>
             <li> <!-- PLACEHOLDER: address --> Address coming soon</li>
             <li> <!-- PLACEHOLDER: hours --> Hours: Mon–Fri 9–5</li>
@@ -144,37 +180,96 @@
   </footer>
 
   <script>
-    // Gallery filters
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const items = document.querySelectorAll('.gallery-item');
-    filterBtns.forEach(btn => btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      items.forEach(it => {
-        it.style.display = (f === 'all' || it.dataset.cat.includes(f)) ? '' : 'none';
-      });
-    }));
+    (function () {
+      "use strict";
 
-    // Lightbox
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbCaption = document.getElementById('lbCaption');
-    items.forEach(it => it.addEventListener('click', () => {
-      const img = it.querySelector('img');
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
-      const cap = it.querySelector('figcaption');
-      const cat = cap.querySelector('small');
-      const desc = cap.lastChild.textContent.trim();
-      lbCaption.textContent = cat ? cat.textContent.trim() + ' — ' + desc : desc;
-      lb.classList.add('open');
-      lb.setAttribute('aria-hidden', 'false');
-    }));
-    function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); }
-    document.getElementById('lbClose').addEventListener('click', closeLb);
-    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+      /* ---------- Gallery filters ---------- */
+      var filterBtns = document.querySelectorAll(".filter-btn");
+      var items = document.querySelectorAll(".gallery-item");
+      var emptyMsg = document.getElementById("galleryEmpty");
+
+      function applyFilter(f) {
+        var visible = 0;
+        items.forEach(function (it) {
+          var show = f === "all" || it.dataset.cat.indexOf(f) !== -1;
+          it.style.display = show ? "" : "none";
+          if (show) visible++;
+        });
+        emptyMsg.hidden = visible > 0;
+      }
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          filterBtns.forEach(function (b) {
+            b.classList.remove("active");
+            b.setAttribute("aria-pressed", "false");
+          });
+          btn.classList.add("active");
+          btn.setAttribute("aria-pressed", "true");
+          applyFilter(btn.dataset.filter);
+        });
+      });
+
+      /* ---------- Lightbox ---------- */
+      var lb = document.getElementById("lightbox");
+      var lbImg = document.getElementById("lbImg");
+      var lbCaption = document.getElementById("lbCaption");
+      var lbClose = document.getElementById("lbClose");
+      var lastFocused = null;
+
+      function openLb(trigger) {
+        lastFocused = document.activeElement;
+        var item = trigger.closest(".gallery-item");
+        var img = item.querySelector("img");
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbCaption.textContent = trigger.dataset.caption || img.alt;
+        lb.classList.add("open");
+        lb.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden"; // lock background scroll
+        lbClose.focus();
+      }
+
+      function closeLb() {
+        if (!lb.classList.contains("open")) return;
+        lb.classList.remove("open");
+        lb.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocused) lastFocused.focus();
+      }
+
+      items.forEach(function (it) {
+        it.querySelector(".gallery-trigger").addEventListener("click", function () {
+          openLb(this);
+        });
+      });
+
+      lbClose.addEventListener("click", closeLb);
+
+      // Click on the backdrop closes (but not clicks on the image/caption)
+      lb.addEventListener("click", function (e) {
+        if (e.target === lb) closeLb();
+      });
+
+      // Escape closes; Tab is trapped inside the open lightbox
+      document.addEventListener("keydown", function (e) {
+        if (!lb.classList.contains("open")) return;
+        if (e.key === "Escape") {
+          closeLb();
+        } else if (e.key === "Tab") {
+          var focusables = lb.querySelectorAll("button, img");
+          var first = lbClose;
+          var last = focusables[focusables.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    })();
   </script>
 </body>
 </html>

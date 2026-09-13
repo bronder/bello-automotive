@@ -44,6 +44,29 @@ img { max-width: 100%; display: block; }
 a { color: var(--red); text-decoration: none; }
 a:hover { color: var(--red-dark); }
 
+/* Visible focus indicator for keyboard users (links, buttons, controls) */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content link: hidden until keyboard-focused */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 0 0 10px 0;
+}
+.skip-link:focus { left: 0; color: #fff; }
+
 h1, h2, h3, h4 {
   line-height: 1.15;
   margin: 0 0 0.5em;
@@ -95,7 +118,7 @@ p { margin: 0 0 1em; }
   text-transform: uppercase;
 }
 
-.brand .brand-name .gold { color: var(--red); }
+.brand .brand-name .accent { color: var(--red); }
 
 .brand .brand-tag {
   font-size: 0.62rem;
@@ -118,13 +141,13 @@ p { margin: 0 0 1em; }
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 9px 12px;
+  padding: 12px 14px;
   border-radius: 8px;
 }
 
 .nav-links a:hover { background: var(--surface-2); color: var(--red); }
 
-.nav-links a.active { color: var(--red); }
+.nav-links a.active { color: var(--red); font-weight: 800; border-bottom: 2px solid var(--red); border-radius: 8px 8px 0 0; }
 
 .nav-links a.nav-cta {
   background: var(--red);
@@ -141,9 +164,18 @@ p { margin: 0 0 1em; }
   min-height: 78vh;
   display: flex;
   align-items: center;
-  background-size: cover;
-  background-position: center 35%;
   isolation: isolate;
+}
+
+/* Real <img> hero so it can be preloaded/responsive (LCP element) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  z-index: -2;
 }
 
 .hero::after {
@@ -334,7 +366,8 @@ p { margin: 0 0 1em; }
   color: var(--muted);
   border: 1px solid #cfd6df;
   border-radius: 999px;
-  padding: 8px 18px;
+  padding: 11px 20px;
+  min-height: 44px;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -358,9 +391,17 @@ p { margin: 0 0 1em; }
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
-  cursor: zoom-in;
   background: var(--surface);
   box-shadow: 0 2px 8px rgba(22, 36, 58, 0.06);
+  margin: 0;
+}
+
+/* The whole tile is a real <button> for keyboard access */
+.gallery-trigger {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
 }
 
 .gallery-item img {
@@ -370,7 +411,8 @@ p { margin: 0 0 1em; }
   transition: transform 0.25s ease;
 }
 
-.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item:hover img,
+.gallery-trigger:focus-visible img { transform: scale(1.04); }
 
 .gallery-item figcaption {
   position: absolute;
@@ -426,17 +468,20 @@ p { margin: 0 0 1em; }
 
 .lightbox .lb-close {
   position: absolute;
-  top: 18px;
-  right: 26px;
+  top: 14px;
+  right: 20px;
+  min-width: 44px;
+  min-height: 44px;
   font-size: 2rem;
   line-height: 1;
   color: #fff;
-  background: none;
-  border: none;
+  background: rgba(15, 26, 44, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.lightbox .lb-close:hover { color: var(--red-light); }
+.lightbox .lb-close:hover { color: var(--red-light); border-color: var(--red-light); }
 
 /* ---------- Process steps ---------- */
 
@@ -513,6 +558,21 @@ p { margin: 0 0 1em; }
 
 .field label .req { color: var(--red); }
 
+/* Inline field validation */
+.field-error {
+  display: block;
+  color: #b02a37;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(215, 38, 61, 0.14);
+}
+
 input[type="text"],
 input[type="tel"],
 input[type="email"],
@@ -534,7 +594,7 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(215, 38, 61, 0.14);
 }
 
-input::placeholder, textarea::placeholder { color: #98a1ae; }
+input::placeholder, textarea::placeholder { color: #6b7482; }
 
 select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 40px; }
 
@@ -577,6 +637,29 @@ textarea { min-height: 110px; resize: vertical; }
 .send-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 
 .form-note { color: var(--muted); font-size: 0.85rem; margin-top: 16px; }
+
+.form-note.is-error { color: #b02a37; font-weight: 600; }
+.form-note.is-success { color: #2b8a3e; font-weight: 600; }
+
+/* Static instruction callout (replaces the fake readonly textarea) */
+.photo-note {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--ink);
+  font-size: 0.92rem;
+  margin-bottom: 18px;
+}
+
+/* Gallery filter empty state */
+.gallery-empty {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.95rem;
+  padding: 30px 0;
+  text-align: center;
+}
 
 /* ---------- Contact page ---------- */
 
@@ -623,7 +706,7 @@ textarea { min-height: 110px; resize: vertical; }
 
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
 
-.site-footer h4 {
+.site-footer h3 {
   font-size: 1rem;
   letter-spacing: 0.14em;
   color: #fff;
@@ -671,4 +754,18 @@ textarea { min-height: 110px; resize: vertical; }
   .nav { flex-direction: column; padding: 12px 0 14px; }
   .hero-inner { padding: 60px 20px 50px; }
   .form-card { padding: 24px 20px 28px; }
+  .site-header { backdrop-filter: none; background: #fff; }
+}
+
+/* Respect users who prefer reduced motion (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  .card:hover,
+  .gallery-item:hover img,
+  .gallery-trigger:focus-visible img,
+  .btn:active { transform: none; }
 }

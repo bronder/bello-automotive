@@ -5,23 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bello Automotive Services — Custom Paint &amp; Restoration</title>
   <meta name="description" content="Bello Automotive Services — custom motorcycle and automotive paint, color-shift finishes, graphics, and restorations. Request a paint quote online.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bello Automotive Services — Custom Paint & Restoration">
+  <meta property="og:description" content="Custom motorcycle and automotive paint, color-shift finishes, graphics, and restorations.">
+  <meta property="og:url" content="https://bellautoservices.com/index.html">
+  <meta property="og:image" content="https://bellautoservices.com/images/hero-chameleon-1280.webp">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/hero-chameleon-1280.webp"
+        imagesrcset="images/hero-chameleon-800.webp 800w, images/hero-chameleon-1280.webp 1280w, images/hero-chameleon-1920.webp 1920w"
+        imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ================= Header ================= -->
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="index.html">
-        <span class="brand-name">Bello<span class="gold"> · </span>Auto</span>
+        <span class="brand-name">Bello<span class="accent"> · </span>Auto</span>
         <span class="brand-tag">Automotive Services</span>
       </a>
       <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="gallery.html">Gallery</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
@@ -30,8 +41,14 @@
     </div>
   </header>
 
+  <main id="main">
+
   <!-- ================= Hero ================= -->
-  <section class="hero" style="background-image:url('images/hero-chameleon.jpg');">
+  <section class="hero">
+    <img class="hero-bg"
+         src="images/hero-chameleon-1280.webp"
+         srcset="images/hero-chameleon-800.webp 800w, images/hero-chameleon-1280.webp 1280w, images/hero-chameleon-1920.webp 1920w"
+         sizes="100vw" width="1920" height="1080" alt="" fetchpriority="high">
     <div class="hero-inner">
       <span class="kicker">Custom Paint &amp; Restoration Shop</span>
       <h1>Paint work that turns heads</h1>
@@ -56,7 +73,7 @@
       </div>
       <div class="grid grid-4">
         <a class="card" href="gallery.html">
-          <img class="card-img" src="images/chameleon-fairing-set.jpg" alt="Color-shift chameleon fairing set">
+          <img class="card-img" src="images/chameleon-fairing-set.webp" width="1200" height="1600" loading="lazy" alt="Color-shift chameleon fairing set">
           <div class="card-body">
             <h3>Full Color-Shift Set</h3>
             <p>Purple-to-green chameleon over flake with hand-laid honeycomb graphics.</p>
@@ -64,7 +81,7 @@
           </div>
         </a>
         <a class="card" href="gallery.html">
-          <img class="card-img" src="images/candy-copper-tank.jpg" alt="Candy copper tank and fender">
+          <img class="card-img" src="images/candy-copper-tank.webp" width="1200" height="1600" loading="lazy" alt="Candy copper tank and fender">
           <div class="card-body">
             <h3>Candy Copper Tank &amp; Fender</h3>
             <p>Deep candy tangerine with silver-leaf panels and pinstriping.</p>
@@ -72,7 +89,7 @@
           </div>
         </a>
         <a class="card" href="gallery.html">
-          <img class="card-img" src="images/honda-candy-restore.jpg" alt="Restored vintage Honda tank">
+          <img class="card-img" src="images/honda-candy-restore.webp" width="788" height="1400" loading="lazy" alt="Restored vintage Honda tank">
           <div class="card-body">
             <h3>Vintage Honda Restore</h3>
             <p>Factory-correct candy orange respray with refreshed tank decal.</p>
@@ -80,7 +97,7 @@
           </div>
         </a>
         <a class="card" href="gallery.html">
-          <img class="card-img" src="images/tour-pak-graphic.jpg" alt="Custom graphic tour pak lid">
+          <img class="card-img" src="images/tour-pak-graphic.webp" width="1200" height="1600" loading="lazy" alt="Custom graphic tour pak lid">
           <div class="card-body">
             <h3>Custom Graphic Lid</h3>
             <p>White, silver, and red scalloped graphics with airbrushed fades.</p>
@@ -150,7 +167,7 @@
   <!-- ================= About teaser ================= -->
   <section class="section">
     <div class="container split">
-      <img src="images/honeycomb-fender.jpg" alt="Honeycomb graphic fender fresh from paint">
+      <img src="images/honeycomb-fender.webp" width="900" height="1600" loading="lazy" alt="Honeycomb graphic fender fresh from paint">
       <div>
         <div class="section-head">
           <span class="eyebrow">The Shop</span>
@@ -182,16 +199,18 @@
   </section>
 
   <!-- ================= Footer ================= -->
+  </main>
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>Bello Automotive Services</h4>
+          <h3>Bello Automotive Services</h3>
           <p>Custom paint, bodywork, and restoration for motorcycles and vehicles.
              <!-- PLACEHOLDER: short shop blurb --></p>
         </div>
         <div>
-          <h4>Quick Links</h4>
+          <h3>Quick Links</h3>
           <ul>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="services.html">Services</a></li>
@@ -200,9 +219,9 @@
           </ul>
         </div>
         <div>
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <ul>
-            <li> <!-- PLACEHOLDER: phone --> <a href="#">(555) 012-3456</a></li>
+            <li>Phone number coming soon</li>
             <li><a href="mailto:krisfrombelloauto@gmail.com">krisfrombelloauto@gmail.com</a></li>
             <li> <!-- PLACEHOLDER: address --> Address coming soon</li>
             <li> <!-- PLACEHOLDER: hours --> Hours: Mon–Fri 9–5</li>

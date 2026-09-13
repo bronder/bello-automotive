@@ -39,9 +39,9 @@
     removeBtn.type = "button";
     removeBtn.className = "remove-part";
     removeBtn.textContent = "✕";
-    removeBtn.setAttribute("aria-label", "Remove part");
     removeBtn.addEventListener("click", function () {
       row.remove();
+      labelRemoveButtons();
       if (!partList.children.length) addPartRow();
       buildRequest();
     });
@@ -50,6 +50,14 @@
     row.appendChild(notesInput);
     row.appendChild(removeBtn);
     partList.appendChild(row);
+    labelRemoveButtons();
+  }
+
+  // Numbered labels so screen readers can tell identical rows apart
+  function labelRemoveButtons() {
+    partList.querySelectorAll(".part-row").forEach(function (row, i) {
+      row.querySelector(".remove-part").setAttribute("aria-label", "Remove part " + (i + 1));
+    });
   }
 
   addPartBtn.addEventListener("click", function () {
@@ -116,26 +124,83 @@
   form.addEventListener("input", buildRequest);
   form.addEventListener("change", buildRequest);
 
-  /* ---------- Send actions ---------- */
+  /* ---------- Validation ---------- */
 
-  function requireContactInfo() {
-    if (!val("custName") || !val("custPhone")) {
-      statusEl.style.color = "#c92a2a";
-      statusEl.textContent = "Please add your name and phone number first.";
-      return false;
+  // Validation rules: field id -> [error span id, human message]
+  var REQUIRED = [
+    ["custName", "custName-error", "Please enter your name."],
+    ["custPhone", "custPhone-error", "Please enter a phone number so the shop can reply."]
+  ];
+
+  function setFieldError(fieldId, errId, message, hasError) {
+    var el = document.getElementById(fieldId);
+    var err = document.getElementById(errId);
+    if (!el || !err) return !hasError;
+    if (hasError) {
+      el.setAttribute("aria-invalid", "true");
+      err.textContent = message;
+      err.hidden = false;
+    } else {
+      el.removeAttribute("aria-invalid");
+      err.hidden = true;
     }
-    return true;
+    return !hasError;
   }
+
+  // Validates all rules; moves focus to the first invalid field. Returns true when valid.
+  function validateContactInfo() {
+    var firstBad = null;
+
+    REQUIRED.forEach(function (rule) {
+      var empty = !val(rule[0]);
+      if (!setFieldError(rule[0], rule[1], rule[2], empty) && !firstBad) firstBad = rule[0];
+    });
+
+    // If they prefer email contact, we need the address
+    var wantsEmail = val("prefContact") === "Email";
+    var emailMissing = wantsEmail && !val("custEmail");
+    if (!setFieldError("custEmail", "custEmail-error",
+        "You picked email as your preferred contact — please add your email address (or switch to text/call).",
+        emailMissing) && !firstBad) {
+      firstBad = "custEmail";
+    }
+
+    if (firstBad) {
+      var el = document.getElementById(firstBad);
+      el.focus();
+      flashStatus("Please fix the highlighted fields above, then send your request.", false);
+    }
+    return !firstBad;
+  }
+
+  // Clear a field's error as soon as the user starts fixing it
+  form.addEventListener("input", function (e) {
+    var id = e.target.id;
+    REQUIRED.forEach(function (rule) {
+      if (rule[0] === id && val(id)) setFieldError(id, rule[1], "", false);
+    });
+    if (id === "custEmail" && (val(id) || val("prefContact") !== "Email")) {
+      setFieldError(id, "custEmail-error", "", false);
+    }
+  });
 
   function flashStatus(msg, ok) {
-    statusEl.style.color = ok ? "#2b8a3e" : "#c92a2a";
+    statusEl.classList.remove("is-error", "is-success");
+    statusEl.classList.add(ok ? "is-success" : "is-error");
     statusEl.textContent = msg;
-    if (msg) setTimeout(function () { statusEl.textContent = ""; }, 4000);
+    if (msg && ok) {
+      // Success notes auto-dismiss; errors stay until fixed
+      setTimeout(function () {
+        if (statusEl.textContent === msg) statusEl.textContent = "";
+      }, 6000);
+    }
   }
 
+  /* ---------- Send actions ---------- */
+
   document.getElementById("emailBtn").addEventListener("click", function () {
-    var text = requireContactInfo() ? buildRequest() : "";
-    if (!text) return;
+    if (!validateContactInfo()) return;
+    var text = buildRequest();
     var subject = "Paint Quote Request — " + val("custName") + (val("vehicle") ? " — " + val("vehicle") : "");
     window.location.href =
       "mailto:" + SHOP_EMAIL +
@@ -144,7 +209,7 @@
   });
 
   document.getElementById("copyBtn").addEventListener("click", function () {
-    if (!requireContactInfo()) return;
+    if (!validateContactInfo()) return;
     var text = buildRequest();
     function done() { flashStatus("Request copied — paste it into a text or email.", true); }
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -163,7 +228,7 @@
   }
 
   document.getElementById("downloadBtn").addEventListener("click", function () {
-    if (!requireContactInfo()) return;
+    if (!validateContactInfo()) return;
     var text = buildRequest();
     var blob = new Blob([text], { type: "text/plain" });
     var a = document.createElement("a");
@@ -178,12 +243,11 @@
     flashStatus("Request file downloaded — email it to " + SHOP_EMAIL + " with your photos.", true);
   });
 
-  /* ---------- Required-field check on submit attempt ---------- */
+  /* ---------- Init ---------- */
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    requireContactInfo();
-  });
+  // Deadline can't be in the past
+  var deadline = document.getElementById("deadline");
+  if (deadline) deadline.min = new Date().toISOString().slice(0, 10);
 
   buildRequest();
 })();

@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paint Quote Request — Bello Automotive Services</title>
   <meta name="description" content="Request a custom paint quote from Bello Automotive Services. Tell us about your bike, the parts, and the look you're after.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Paint Quote Request — Bello Automotive Services">
+  <meta property="og:description" content="Request a custom paint quote. Tell us about your bike, the parts, and the look you are after.">
+  <meta property="og:url" content="https://bellautoservices.com/quote.html">
+  <meta property="og:image" content="https://bellautoservices.com/images/hero-chameleon-1280.webp">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +18,8 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container nav">
@@ -29,11 +37,13 @@
     </div>
   </header>
 
+  <main id="main">
+
   <section class="section">
     <div class="container">
       <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
         <span class="eyebrow">Paint Quote Request</span>
-        <h2>Tell us about your project</h2>
+        <h1>Tell us about your project</h1>
         <p style="margin-left:auto;margin-right:auto;">
           Fill this out and it turns into a clean request you can email, copy, or text back to the shop.
           Photos get attached separately after you send it.
@@ -48,17 +58,22 @@
           <div class="field-row">
             <div class="field">
               <label for="custName">Name <span class="req">*</span></label>
-              <input type="text" id="custName" name="custName" placeholder="Full name" required>
+              <input type="text" id="custName" name="custName" placeholder="Full name"
+                     autocomplete="name" required aria-describedby="custName-error">
+              <span class="field-error" id="custName-error" hidden>Please enter your name.</span>
             </div>
             <div class="field">
               <label for="custPhone">Phone <span class="req">*</span></label>
-              <input type="tel" id="custPhone" name="custPhone" placeholder="Phone number" required>
+              <input type="tel" id="custPhone" name="custPhone" placeholder="Phone number"
+                     autocomplete="tel" required aria-describedby="custPhone-error">
+              <span class="field-error" id="custPhone-error" hidden>Please enter a phone number so the shop can reply.</span>
             </div>
           </div>
           <div class="field-row">
             <div class="field">
               <label for="custEmail">Email</label>
-              <input type="email" id="custEmail" name="custEmail" placeholder="Email address">
+              <input type="email" id="custEmail" name="custEmail" placeholder="Email address" autocomplete="email" aria-describedby="custEmail-error">
+              <span class="field-error" id="custEmail-error" hidden></span>
             </div>
             <div class="field">
               <label for="prefContact">Preferred contact</label>
@@ -139,10 +154,7 @@
         <!-- ============ Photos / notes ============ -->
         <div class="form-card">
           <h2>Photos / Notes</h2>
-          <div class="field">
-            <label>Photo note</label>
-            <textarea class="request-preview" style="min-height:90px;" readonly>Please attach clear photos of each part, close-ups of damage, and a photo of the motorcycle if possible.</textarea>
-          </div>
+          <p class="photo-note">📸 Please attach clear photos of each part, close-ups of any damage, and a photo of the whole bike if possible.</p>
           <div class="field">
             <label for="extraNotes">Extra notes</label>
             <textarea id="extraNotes" name="extraNotes" placeholder="Anything else the shop should know?"></textarea>
@@ -172,16 +184,18 @@
     </div>
   </section>
 
+  </main>
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4>Bello Automotive Services</h4>
+          <h3>Bello Automotive Services</h3>
           <p>Custom paint, bodywork, and restoration for motorcycles and vehicles.
              <!-- PLACEHOLDER: short shop blurb --></p>
         </div>
         <div>
-          <h4>Quick Links</h4>
+          <h3>Quick Links</h3>
           <ul>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="services.html">Services</a></li>
@@ -190,9 +204,9 @@
           </ul>
         </div>
         <div>
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <ul>
-            <li> <!-- PLACEHOLDER: phone --> <a href="#">(555) 012-3456</a></li>
+            <li>Phone number coming soon</li>
             <li><a href="mailto:krisfrombelloauto@gmail.com">krisfrombelloauto@gmail.com</a></li>
             <li> <!-- PLACEHOLDER: address --> Address coming soon</li>
             <li> <!-- PLACEHOLDER: hours --> Hours: Mon–Fri 9–5</li>
