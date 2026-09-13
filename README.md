@@ -87,9 +87,11 @@ Captions are descriptive of what the photos show — Kris should confirm/adjust
 - **Domain** — shop doesn't own one yet; when bought, add CNAME + Pages custom
   domain and update `js/quote.js` "Sent from" line
 - **Web3Forms key** — the quote form's "Send Request to Shop" button posts to
-  web3forms.com; register `krisfrombelloauto@gmail.com` there (free) and paste
-  the access key into `WEB3FORMS_KEY` in `js/quote.js`. Until then the button
-  degrades gracefully to the Email/Copy/Download fallbacks.
+  web3forms.com. It is temporarily using the DC Custom Guitars key
+  (delivers to info@dccustomguitars.com) for testing; before launch, register
+  `krisfrombelloauto@gmail.com` (free) and swap in its access key in
+  `WEB3FORMS_KEY` in `js/quote.js`. Until then the send button also degrades
+  gracefully to the Email/Copy/Download fallbacks.
 - **TikTok** — add link when the shop joins
 
 ## Running locally

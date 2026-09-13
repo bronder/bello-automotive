@@ -9,10 +9,11 @@
 
   var SHOP_EMAIL = "krisfrombelloauto@gmail.com";
 
-  // Web3Forms access key for krisfrombelloauto@gmail.com — free key from
-  // https://web3forms.com (one key per inbox). Until a real key is pasted here,
-  // the "Send Request to Shop" button fails gracefully to the manual options.
-  var WEB3FORMS_KEY = "PASTE-WEB3FORMS-ACCESS-KEY";
+  // Web3Forms access key — free key from https://web3forms.com (one key per inbox).
+  // TEMPORARY: currently borrowed from the DC Custom Guitars account
+  // (delivers to info@dccustomguitars.com) for testing. Before launch, create
+  // a web3forms entry for krisfrombelloauto@gmail.com and replace this key.
+  var WEB3FORMS_KEY = "fa32464f-d90e-49c4-96db-a2b9c1c0507c";
 
   var form = document.getElementById("quoteForm");
   var partList = document.getElementById("partList");
