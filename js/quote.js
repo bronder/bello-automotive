@@ -283,7 +283,7 @@
       .then(function (res) { return res.json(); })
       .then(function (data) {
         if (!data.success) throw new Error(data.message || "Submission failed");
-        flashStatus("Request sent! The shop will get back to you shortly — photos can come in the reply.", true);
+        flashStatus("Request sent! The shop will review it and follow up with next steps. Need something sooner? Call (508) 461-6432.", true);
         form.reset();
         partList.innerHTML = "";
         addPartRow();
