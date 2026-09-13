@@ -1,5 +1,5 @@
 /* ============================================================
-   Bello Automotive — Paint Quote Request form logic
+   Bello Automotive — Quote Request form logic
    Client-side only: builds a plain-text request, then lets the
    customer email it to the shop, copy it, or download it.
    ============================================================ */
@@ -15,7 +15,7 @@
   var generated = document.getElementById("generated");
   var statusEl = document.getElementById("formStatus");
 
-  /* ---------- Dynamic "Parts Being Painted" rows ---------- */
+  /* ---------- Dynamic "Parts / Work Needed" rows ---------- */
 
   function addPartRow(name, notes) {
     var row = document.createElement("div");
@@ -90,25 +90,26 @@
       if (name || notes) parts.push("  - " + (name || "(part)") + (notes ? " — " + notes : ""));
     });
 
-    var text = "MOTORCYCLE PAINT QUOTE REQUEST\n";
-    text += "Sent from bellautoservices.com — " + new Date().toLocaleDateString() + "\n\n";
+    var text = "QUOTE REQUEST\n";
+    text += "Sent from the Bello Automotive website — " + new Date().toLocaleDateString() + "\n\n";
 
     text += "CUSTOMER INFO\n";
     text += line("Name", val("custName"));
     text += line("Phone", val("custPhone"));
     text += line("Email", val("custEmail"));
     text += line("Preferred contact", val("prefContact"));
-    text += line("Motorcycle", val("vehicle"));
+    text += line("Vehicle", val("vehicle"));
     text += line("Timeline", val("timeline"));
     text += line("Deadline", val("deadline"));
 
-    text += "\nPAINT JOB DETAILS\n";
-    text += line("Paint style", val("paintStyle"));
-    text += line("Finish", val("finish"));
-    text += line("Color / design idea", val("designIdea"));
+    text += "\nPROJECT DETAILS\n";
+    text += line("Type of work", val("serviceType"));
+    text += line("Paint style (if paint work)", val("paintStyle"));
+    text += line("Finish (if paint work)", val("finish"));
+    text += line("Work / design idea", val("designIdea"));
     text += line("Damage / bodywork", val("damage"));
 
-    text += "\nPARTS BEING PAINTED\n";
+    text += "\nPARTS / WORK NEEDED\n";
     text += (parts.length ? parts.join("\n") : "  (none listed yet)") + "\n";
 
     text += "\nNOTES\n";
@@ -129,7 +130,8 @@
   // Validation rules: field id -> [error span id, human message]
   var REQUIRED = [
     ["custName", "custName-error", "Please enter your name."],
-    ["custPhone", "custPhone-error", "Please enter a phone number so the shop can reply."]
+    ["custPhone", "custPhone-error", "Please enter a phone number so the shop can reply."],
+    ["serviceType", "serviceType-error", "Please choose the type of work."]
   ];
 
   function setFieldError(fieldId, errId, message, hasError) {
@@ -173,8 +175,9 @@
     return !firstBad;
   }
 
-  // Clear a field's error as soon as the user starts fixing it
-  form.addEventListener("input", function (e) {
+  // Clear a field's error as soon as the user starts fixing it (input covers
+  // text fields; change covers selects)
+  function clearErrorsOnInput(e) {
     var id = e.target.id;
     REQUIRED.forEach(function (rule) {
       if (rule[0] === id && val(id)) setFieldError(id, rule[1], "", false);
@@ -182,7 +185,9 @@
     if (id === "custEmail" && (val(id) || val("prefContact") !== "Email")) {
       setFieldError(id, "custEmail-error", "", false);
     }
-  });
+  }
+  form.addEventListener("input", clearErrorsOnInput);
+  form.addEventListener("change", clearErrorsOnInput);
 
   function flashStatus(msg, ok) {
     statusEl.classList.remove("is-error", "is-success");
@@ -201,7 +206,7 @@
   document.getElementById("emailBtn").addEventListener("click", function () {
     if (!validateContactInfo()) return;
     var text = buildRequest();
-    var subject = "Paint Quote Request — " + val("custName") + (val("vehicle") ? " — " + val("vehicle") : "");
+    var subject = "Quote Request — " + val("custName") + (val("vehicle") ? " — " + val("vehicle") : "");
     window.location.href =
       "mailto:" + SHOP_EMAIL +
       "?subject=" + encodeURIComponent(subject) +

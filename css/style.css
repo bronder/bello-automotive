@@ -223,6 +223,16 @@ p { margin: 0 0 1em; }
 
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
 
+.hero-badges {
+  margin-top: 26px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red-light);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
 /* ---------- Buttons ---------- */
 
 .btn {
@@ -279,6 +289,7 @@ p { margin: 0 0 1em; }
   margin-bottom: 10px;
 }
 
+.section-head h1,
 .section-head h2 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); letter-spacing: 0.03em; }
 
 .section-head p { color: var(--muted); }
@@ -696,6 +707,50 @@ textarea { min-height: 110px; resize: vertical; }
   font-weight: 600;
 }
 
+.map-embed { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+
+.map-embed iframe { display: block; width: 100%; height: 320px; border: 0; }
+
+.quote-facts {
+  max-width: 780px;
+  margin: 0 auto 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.quote-facts span::before { content: "\2713"; color: var(--green); margin-right: 8px; }
+
+/* ---------- Testimonials ---------- */
+
+.testimonial blockquote {
+  margin: 0 0 14px;
+  font-size: 0.94rem;
+  color: var(--ink);
+  flex: 1;
+}
+
+.testimonial .stars {
+  color: var(--red);
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.testimonial figcaption {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -714,6 +769,12 @@ textarea { min-height: 110px; resize: vertical; }
 }
 
 .site-footer p, .site-footer li { color: #a6b1c0; font-size: 0.9rem; }
+
+.footer-social { margin-top: 14px; font-size: 0.88rem; }
+
+.footer-social a { color: #a6b1c0; font-weight: 600; }
+
+.footer-social a:hover { color: var(--red-light); }
 
 .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
 

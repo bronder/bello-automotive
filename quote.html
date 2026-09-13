@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paint Quote Request — Bello Automotive Services</title>
-  <meta name="description" content="Request a custom paint quote from Bello Automotive Services. Tell us about your bike, the parts, and the look you're after.">
+  <title>Request a Quote — Bello Automotive LLC | Webster, MA</title>
+  <meta name="description" content="Request a quote from Bello Automotive LLC in Webster, MA — collision repair, custom paint, welding &amp; fabrication, general repairs, and pinstriping for cars and motorcycles.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Paint Quote Request — Bello Automotive Services">
-  <meta property="og:description" content="Request a custom paint quote. Tell us about your bike, the parts, and the look you are after.">
+  <meta property="og:title" content="Quote Request — Bello Automotive LLC">
+  <meta property="og:description" content="Request a quote from Bello Automotive LLC — paint, collision, fabrication, or repair. Tell us about your vehicle and the work you need.">
   <meta property="og:url" content="https://bellautoservices.com/quote.html">
   <meta property="og:image" content="https://bellautoservices.com/images/hero-chameleon-1280.webp">
   <meta name="twitter:card" content="summary_large_image">
@@ -24,15 +24,15 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="index.html">
-        <span class="brand-name">Bello<span class="gold"> · </span>Auto</span>
-        <span class="brand-tag">Automotive Services</span>
+        <span class="brand-name">Bello<span class="accent"> · </span>Auto</span>
+        <span class="brand-tag">Automotive &amp; Motorcycle</span>
       </a>
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="gallery.html">Gallery</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
-        <a href="quote.html" class="nav-cta">Paint Quote</a>
+        <a href="quote.html" class="nav-cta" aria-current="page">Get a Quote</a>
       </nav>
     </div>
   </header>
@@ -42,12 +42,19 @@
   <section class="section">
     <div class="container">
       <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
-        <span class="eyebrow">Paint Quote Request</span>
+        <span class="eyebrow">Quote Request</span>
         <h1>Tell us about your project</h1>
         <p style="margin-left:auto;margin-right:auto;">
-          Fill this out and it turns into a clean request you can email, copy, or text back to the shop.
+          Collision, paint, welding, or repair — fill this out and it turns into a clean
+          request you can email, copy, or text back to the shop.
           Photos get attached separately after you send it.
         </p>
+      </div>
+
+      <div class="quote-facts">
+        <span>The shop replies with an estimate by call or text</span>
+        <span>50% deposit at drop-off &middot; balance at completion</span>
+        <span>Cash, card, Venmo &amp; Zelle accepted</span>
       </div>
 
       <form class="form-wrap" id="quoteForm" novalidate>
@@ -85,7 +92,7 @@
             </div>
           </div>
           <div class="field">
-            <label for="vehicle">Motorcycle year / make / model</label>
+            <label for="vehicle">Vehicle year / make / model (car or motorcycle)</label>
             <input type="text" id="vehicle" name="vehicle" placeholder="e.g. 2021 Harley Street Glide">
           </div>
           <div class="field-row">
@@ -106,13 +113,29 @@
           </div>
         </div>
 
-        <!-- ============ Paint job details ============ -->
+        <!-- ============ Project details ============ -->
         <div class="form-card">
-          <h2>Paint Job Details</h2>
+          <h2>Project Details</h2>
+          <div class="field">
+            <label for="serviceType">Type of work <span class="req">*</span></label>
+            <select id="serviceType" name="serviceType" aria-describedby="serviceType-error">
+              <option value="">Select the type of work…</option>
+              <option>Custom paint</option>
+              <option>Collision repair</option>
+              <option>Welding &amp; fabrication</option>
+              <option>General repair / maintenance</option>
+              <option>Factory match / OEM repair</option>
+              <option>Pinstriping / graphics</option>
+              <option>Rock chip / crack repair</option>
+              <option>Multiple / not sure yet</option>
+            </select>
+            <span class="field-error" id="serviceType-error" hidden>Please choose the type of work.</span>
+          </div>
           <div class="field-row">
             <div class="field">
-              <label for="paintStyle">Paint style</label>
+              <label for="paintStyle">Paint style, if paint work</label>
               <select id="paintStyle" name="paintStyle">
+                <option>Not paint work</option>
                 <option>Solid color</option>
                 <option>Metallic</option>
                 <option>Pearl</option>
@@ -125,8 +148,9 @@
               </select>
             </div>
             <div class="field">
-              <label for="finish">Finish</label>
+              <label for="finish">Finish, if paint work</label>
               <select id="finish" name="finish">
+                <option>Not paint work</option>
                 <option>Gloss</option>
                 <option>Satin</option>
                 <option>Matte</option>
@@ -134,19 +158,19 @@
             </div>
           </div>
           <div class="field">
-            <label for="designIdea">Color / design idea</label>
-            <textarea id="designIdea" name="designIdea" placeholder="Example: gloss black, color match to factory, flames, pinstripe, logo, etc."></textarea>
+            <label for="designIdea">Describe the work / design idea</label>
+            <textarea id="designIdea" name="designIdea" placeholder="Example: turbo kit and exhaust for a 5.3 swap, gloss black with flames, color match to factory, pinstripe the tank, etc."></textarea>
           </div>
           <div class="field">
-            <label for="damage">Damage, dents, cracks, old paint, rust, or bodywork needed?</label>
+            <label for="damage">Damage, dents, cracks, rust, or other conditions to know about?</label>
             <textarea id="damage" name="damage" placeholder="Describe anything that needs repair or prep."></textarea>
           </div>
         </div>
 
-        <!-- ============ Parts being painted ============ -->
+        <!-- ============ Parts / work needed ============ -->
         <div class="form-card">
-          <h2>Parts Being Painted</h2>
-          <p class="form-hint">Add each part separately so the shop can price it accurately.</p>
+          <h2>Parts / Work Needed</h2>
+          <p class="form-hint">Add each part or job separately so the shop can price it accurately.</p>
           <div id="partList"></div>
           <button type="button" class="btn btn-primary btn-sm" id="addPart">+ Add Part</button>
         </div>
@@ -154,7 +178,10 @@
         <!-- ============ Photos / notes ============ -->
         <div class="form-card">
           <h2>Photos / Notes</h2>
-          <p class="photo-note">📸 Please attach clear photos of each part, close-ups of any damage, and a photo of the whole bike if possible.</p>
+          <div class="field">
+            <label>Photo note</label>
+            <p class="photo-note">📸 Please attach clear photos of each part, close-ups of any damage, and a photo of the whole vehicle if possible.</p>
+          </div>
           <div class="field">
             <label for="extraNotes">Extra notes</label>
             <textarea id="extraNotes" name="extraNotes" placeholder="Anything else the shop should know?"></textarea>
@@ -190,32 +217,38 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h3>Bello Automotive Services</h3>
-          <p>Custom paint, bodywork, and restoration for motorcycles and vehicles.
-             <!-- PLACEHOLDER: short shop blurb --></p>
+          <h3>Bello Automotive LLC</h3>
+          <p>Family-run automotive &amp; motorcycle shop in Webster, MA.
+             Collision repair, custom paint, general repairs, and welding &amp;
+             fabrication — all done in-house, with a lifetime warranty on paint work.</p>
+          <p class="footer-social">
+            <a href="https://www.facebook.com/p/Bello-Automotive-Service-Sales-Race-Welding-100063912104864/" target="_blank" rel="noopener">Facebook</a> &middot;
+            <a href="https://www.instagram.com/belloautomotive/" target="_blank" rel="noopener">Instagram</a> &middot;
+            <a href="https://www.youtube.com/@belloautomotive1522" target="_blank" rel="noopener">YouTube</a>
+          </p>
         </div>
         <div>
           <h3>Quick Links</h3>
           <ul>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="quote.html">Paint Quote Request</a></li>
+            <li><a href="quote.html">Request a Quote</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div>
           <h3>Contact</h3>
           <ul>
-            <li>Phone number coming soon</li>
+            <li><a href="tel:+15084616432">(508) 461-6432</a></li>
             <li><a href="mailto:krisfrombelloauto@gmail.com">krisfrombelloauto@gmail.com</a></li>
-            <li> <!-- PLACEHOLDER: address --> Address coming soon</li>
-            <li> <!-- PLACEHOLDER: hours --> Hours: Mon–Fri 9–5</li>
+            <li><a href="https://maps.google.com/?q=27+Worcester+Rd,+Webster,+MA+01570" target="_blank" rel="noopener">27 Worcester Rd, Webster, MA 01570</a></li>
+            <li>Mon–Fri 8–5 &middot; Sat 8–12 &middot; Sun closed</li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 Bello Automotive Services. All rights reserved.</span>
-        <span>Site under construction — content is placeholder.</span>
+        <span>&copy; 2026 Bello Automotive LLC &middot; Webster, MA</span>
+        <span>PPG-certified shop &middot; House of Kolor custom paint &middot; Lifetime paint warranty</span>
       </div>
     </div>
   </footer>

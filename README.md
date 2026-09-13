@@ -1,28 +1,44 @@
-# Bello Automotive Services — Website
+# Bello Automotive LLC — Website
 
-Static site (plain HTML/CSS/JS, no build step) for Bello Automotive Services,
-modeled on the same showcase format as the DC Custom Guitars site: hero,
-gallery of real work, services, intake/quote form, contact.
+Static site (plain HTML/CSS/JS, no build step) for **Bello Automotive LLC**
+(aka Bello Automotive & Motorcycle) in Webster, MA: hero, gallery of real work,
+services, general quote intake form, contact with map.
+
+**Positioning:** the shop is full-service — collision, custom paint, general
+repairs, welding & fabrication, pinstriping, OEM/insurance repairs. Paint is
+*one* service, featured but not the site's identity. The gallery is
+paint-heavy only because that's the photography we have so far; Kris is
+sending photos of all services.
 
 **Live:** https://bronder.github.io/bello-automotive/ — deploys automatically
 on every push to `main` via [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+
+## Shop facts (confirmed by Kris, Sept 2026)
+
+- **Name:** Bello Automotive LLC / Bello Automotive & Motorcycle
+- **Address:** 27 Worcester Rd, Webster MA 01570
+- **Phone:** (508) 461-6432 shop · (610) 906-2640 direct
+- **Email:** krisfrombelloauto@gmail.com
+- **Hours:** M–F 8–5, Sat 8–12, Sun closed
+- **Socials:** [Facebook](https://www.facebook.com/p/Bello-Automotive-Service-Sales-Race-Welding-100063912104864/) · [Instagram @belloautomotive](https://www.instagram.com/belloautomotive/) · [YouTube @belloautomotive1522](https://www.youtube.com/@belloautomotive1522) (TikTok planned)
+- **Reviews:** 5.0 on Google — 18 reviews, all five stars (place_id `ChIJ_6GhBfcf5IkRwy6npAn4iUk`); four written reviews featured on the homepage in a 2×2 grid (only four written reviews are public — the rest are stars-only)
+- **History:** painting 18 years; shop in Philadelphia since 2008, Webster since 2019
+- **Materials:** PPG-certified shop; House of Kolor for ~95% of custom work; PPG primers/sealers/bases/clears; 3M paper, FBS tape
+- **Policies:** 50% deposit at drop-off, 50% at completion · cash/card/Venmo/Zelle · pre-pay = priority queue · parts or whole vehicles, shipped or dropped · R&I available for a fee · **lifetime paint warranty** (OEM procedures + approved materials) · no very rusty projects or "cheap/perfect-not-required" jobs · motorcycle summer special 10% June–Sept
 
 ## Pages
 
 | Page | Purpose |
 |------|---------|
-| `index.html` | Home — hero, recent work, services teaser, about teaser, CTA |
-| `gallery.html` | Photo gallery of paint work with category filters + lightbox |
-| `services.html` | Service cards (placeholders) + 5-step process |
-| `quote.html` | **Paint Quote Request** — working intake form (from Kris's screenshots) |
-| `contact.html` | Contact info + map placeholder |
+| `index.html` | Home — hero + trust badges, recent work, services teaser, testimonials, about, CTA |
+| `gallery.html` | Work gallery with category filters + lightbox |
+| `services.html` | The 7 real services, 5-step process, "Good to know" policies |
+| `quote.html` | **Quote Request** — general intake form (type-of-work select, works for paint/collision/welding/repair) |
+| `contact.html` | Phones, email, hours, socials, Google Maps embed |
 
 The quote form is fully client-side: it builds a plain-text request and offers
-**Email to shop** (mailto to `krisfrombelloauto@gmail.com`), **Copy**, and
-**Download (.txt)**. Photos are attached to the email/text separately, same as
-the original intake flow. Form fields mirror the original:
-Customer Info → Paint Job Details → Parts Being Painted (dynamic rows) →
-Photos/Notes → Send.
+**Email to shop**, **Copy**, and **Download (.txt)**. Photos are attached to the
+email/text separately, same as the original intake flow.
 
 ## Images
 
@@ -42,19 +58,35 @@ Web-optimized copies of Kris's photos live in `images/` (originals are in
 | `silver-red-tank-set.jpg` | 0b5feae3…JPEG | Silver/red tank set on shelf |
 | `number-one-tank.jpg` | 274b9738…JPEG | Number-one tank, star field |
 
-## TODO / Placeholders to confirm with the shop
+Welding & fabrication set (from the shop's Facebook photos, Sept 2026):
 
-Search the HTML for `PLACEHOLDER` comments. Summary:
+| File | Shot |
+|------|------|
+| `fab-tig-welding.jpg` | Kris TIG welding at the bench |
+| `fab-stacked-dimes.jpg` | Stacked-dime TIG beads on stainless pipe |
+| `fab-flange-weld.jpg` | Flange-to-pipe TIG fillet |
+| `fab-cone-transition.jpg` | Hand-built cone transition |
+| `fab-intake-piping.jpg` | Fabricated intake piping, tacked on the bench |
+| `fab-honda-header.jpg` | Custom header/collector on a Honda VTEC build |
+| `fab-turbo-kit.jpg` | Turbo with fabricated downpipe, heat-shielded |
+| `fab-dual-exhaust.jpg` | Custom mandrel-bent dual exhaust |
+| `fab-kawasaki-exhaust.jpg` | Custom exhaust mid-build, Kawasaki track bike |
+| `fab-muffler-before-after.jpg` | Crushed stock can vs. hand-built carbon replacement |
+| `fab-cast-elbow-repro.jpg` | Cracked cast elbow vs. fabricated aluminum replacement |
 
-- **Contact info** — phone number, shop address, hours, social links
-  (`(555) 012-3456` and "Address coming soon" are dummies; email
-  `krisfrombelloauto@gmail.com` is real, taken from the intake form)
-- **About section** (index) — shop story, owner bio, years in business
-- **Services** — final service list, descriptions, pricing approach
-- **Process steps** — confirm the 5 steps match how the shop actually works
-- **Domain name** — quote form's generated text says "Sent from bellautoservices.com"; update when the real domain is known
-- **Gallery captions** — bike models / paint systems used per job
-- **Footer blurb**
+Captions are descriptive of what the photos show — Kris should confirm/adjust
+(bike model, vehicle, metal type).
+
+## Still open
+
+- **Photos & videos** — fabrication set added Sept 2026; still waiting on
+  collision/repair photos and video content; captions may need Kris's input
+  (bike model, vehicle, materials)
+- **Service detail** — Kris promised better details per service; expand the
+  service cards when it arrives
+- **Domain** — shop doesn't own one yet; when bought, add CNAME + Pages custom
+  domain and update `js/quote.js` "Sent from" line
+- **TikTok** — add link when the shop joins
 
 ## Running locally
 
