@@ -39,7 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; display: block; height: auto; }
 
 a { color: var(--red); text-decoration: none; }
 a:hover { color: var(--red-dark); }
