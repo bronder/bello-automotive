@@ -133,11 +133,26 @@
 
   /* ---------- Validation ---------- */
 
-  // Validation rules: field id -> [error span id, human message]
-  var REQUIRED = [
-    ["custName", "custName-error", "Please enter your name."],
-    ["custPhone", "custPhone-error", "Please enter a phone number so the shop can reply."],
-    ["serviceType", "serviceType-error", "Please choose the type of work."]
+  function validPhone(v) {
+    var d = v.replace(/\D/g, "");
+    // 10-digit US number, or 11 with a leading 1. Format-agnostic otherwise.
+    return (d.length === 10 && d[0] !== "0" && d[0] !== "1") ||
+           (d.length === 11 && d[0] === "1");
+  }
+
+  function validEmail(v) {
+    // Pragmatic plausibility check, not full RFC validation
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+  }
+
+  // Validation rules: required-empty message, plus optional format check
+  var RULES = [
+    { id: "custName", err: "custName-error", empty: "Please enter your name." },
+    { id: "custPhone", err: "custPhone-error", empty: "Please enter a phone number so the shop can reply.",
+      format: validPhone, formatMessage: "That phone number doesn't look complete — include the area code, e.g. (508) 461-6432." },
+    { id: "serviceType", err: "serviceType-error", empty: "Please choose the type of work." },
+    { id: "custEmail", err: "custEmail-error", empty: "",
+      format: validEmail, formatMessage: "That email address doesn't look right — double-check it for typos." }
   ];
 
   function setFieldError(fieldId, errId, message, hasError) {
@@ -159,18 +174,28 @@
   function validateContactInfo() {
     var firstBad = null;
 
-    REQUIRED.forEach(function (rule) {
-      var empty = !val(rule[0]);
-      if (!setFieldError(rule[0], rule[1], rule[2], empty) && !firstBad) firstBad = rule[0];
+    RULES.forEach(function (rule) {
+      var v = val(rule.id);
+      var bad = false, msg = "";
+      if (!v && rule.empty) {
+        bad = true;
+        msg = rule.empty;
+      } else if (v && rule.format && !rule.format(v)) {
+        bad = true;
+        msg = rule.formatMessage;
+      }
+      if (!setFieldError(rule.id, rule.err, msg, bad) && !firstBad) firstBad = rule.id;
     });
 
-    // If they prefer email contact, we need the address
-    var wantsEmail = val("prefContact") === "Email";
-    var emailMissing = wantsEmail && !val("custEmail");
-    if (!setFieldError("custEmail", "custEmail-error",
-        "You picked email as your preferred contact — please add your email address (or switch to text/call).",
-        emailMissing) && !firstBad) {
-      firstBad = "custEmail";
+    // If they prefer email contact, we need the address (only when it's empty —
+    // otherwise this would wipe a format error set above)
+    if (!val("custEmail")) {
+      var wantsEmail = val("prefContact") === "Email";
+      if (!setFieldError("custEmail", "custEmail-error",
+          "You picked email as your preferred contact — please add your email address (or switch to text/call).",
+          wantsEmail) && !firstBad) {
+        firstBad = "custEmail";
+      }
     }
 
     if (firstBad) {
@@ -181,19 +206,32 @@
     return !firstBad;
   }
 
-  // Clear a field's error as soon as the user starts fixing it (input covers
-  // text fields; change covers selects)
+  // Clear a field's error as soon as it becomes valid (never ADD errors mid-typing)
   function clearErrorsOnInput(e) {
     var id = e.target.id;
-    REQUIRED.forEach(function (rule) {
-      if (rule[0] === id && val(id)) setFieldError(id, rule[1], "", false);
+    RULES.forEach(function (rule) {
+      if (rule.id !== id) return;
+      var v = val(id);
+      var ok = rule.empty ? !!v : true;
+      if (ok && rule.format) ok = rule.format(v);
+      if (ok) setFieldError(id, rule.err, "", false);
     });
-    if (id === "custEmail" && (val(id) || val("prefContact") !== "Email")) {
-      setFieldError(id, "custEmail-error", "", false);
+    if (id === "prefContact" && val("prefContact") !== "Email") {
+      setFieldError("custEmail", "custEmail-error", "", false);
     }
   }
   form.addEventListener("input", clearErrorsOnInput);
   form.addEventListener("change", clearErrorsOnInput);
+
+  // Format-check non-empty fields on blur so typos surface early
+  form.addEventListener("focusout", function (e) {
+    var id = e.target.id;
+    RULES.forEach(function (rule) {
+      if (rule.id !== id || !rule.format) return;
+      var v = val(id);
+      if (v && !rule.format(v)) setFieldError(id, rule.err, rule.formatMessage, true);
+    });
+  });
 
   function flashStatus(msg, ok) {
     statusEl.classList.remove("is-error", "is-success");
