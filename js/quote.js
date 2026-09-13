@@ -9,6 +9,11 @@
 
   var SHOP_EMAIL = "krisfrombelloauto@gmail.com";
 
+  // Web3Forms access key for krisfrombelloauto@gmail.com — free key from
+  // https://web3forms.com (one key per inbox). Until a real key is pasted here,
+  // the "Send Request to Shop" button fails gracefully to the manual options.
+  var WEB3FORMS_KEY = "PASTE-WEB3FORMS-ACCESS-KEY";
+
   var form = document.getElementById("quoteForm");
   var partList = document.getElementById("partList");
   var addPartBtn = document.getElementById("addPart");
@@ -246,6 +251,51 @@
     a.remove();
     URL.revokeObjectURL(a.href);
     flashStatus("Request file downloaded — email it to " + SHOP_EMAIL + " with your photos.", true);
+  });
+
+  /* ---------- Direct send to the shop (Web3Forms) ---------- */
+
+  var sendBtn = document.getElementById("sendBtn");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!validateContactInfo()) return;
+
+    var text = buildRequest();
+    var subject = "Quote Request — " + val("custName") + (val("vehicle") ? " — " + val("vehicle") : "");
+    var payload = Object.fromEntries(new FormData(form));
+    payload.access_key = WEB3FORMS_KEY;
+    payload.subject = subject;
+    payload.from_name = "Bello Automotive website";
+    payload["Request details"] = text;
+
+    var label = sendBtn.textContent;
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Sending…";
+    statusEl.textContent = "";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data.success) throw new Error(data.message || "Submission failed");
+        flashStatus("Request sent! The shop will get back to you shortly — photos can come in the reply.", true);
+        form.reset();
+        partList.innerHTML = "";
+        addPartRow();
+        addPartRow();
+        buildRequest();
+      })
+      .catch(function () {
+        flashStatus("Couldn't send automatically — no worries: use Email, Copy, or Download below to send the request yourself.", false);
+      })
+      .then(function () {
+        sendBtn.disabled = false;
+        sendBtn.textContent = label;
+      });
   });
 
   /* ---------- Init ---------- */

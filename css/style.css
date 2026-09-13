@@ -651,6 +651,15 @@ textarea { min-height: 110px; resize: vertical; }
 
 .form-note { color: var(--muted); font-size: 0.85rem; margin-top: 16px; }
 
+/* Spam-trap checkbox: present in the DOM, invisible to humans */
+.honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-note.is-error { color: #b02a37; font-weight: 600; }
 .form-note.is-success { color: #2b8a3e; font-weight: 600; }
 

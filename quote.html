@@ -179,7 +179,6 @@
         <div class="form-card">
           <h2>Photos / Notes</h2>
           <div class="field">
-            <label>Photo note</label>
             <p class="photo-note">📸 Please attach clear photos of each part, close-ups of any damage, and a photo of the whole vehicle if possible.</p>
           </div>
           <div class="field">
@@ -192,15 +191,17 @@
         <div class="form-card">
           <h2>Send Request</h2>
           <p class="form-hint">
-            This builds a clean summary of your request. Email it to the shop, copy it to text,
-            or download it as a file — then attach your photos to the message.
+            Hit send and your request lands straight in the shop's inbox — or email, copy, or
+            download it yourself. Either way, attach your photos to the message.
           </p>
           <div class="field">
             <label for="generated">Generated request</label>
             <textarea class="request-preview" id="generated" readonly></textarea>
           </div>
+          <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="send-actions">
-            <button type="button" class="btn btn-green" id="emailBtn">Email Request to Shop</button>
+            <button type="submit" class="btn btn-green" id="sendBtn">Send Request to Shop</button>
+            <button type="button" class="btn btn-ghost" id="emailBtn">Email It Yourself</button>
             <button type="button" class="btn btn-ghost" id="copyBtn">Copy Request</button>
             <button type="button" class="btn btn-ghost" id="downloadBtn">Download Request File</button>
           </div>

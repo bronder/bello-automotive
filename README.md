@@ -86,6 +86,10 @@ Captions are descriptive of what the photos show — Kris should confirm/adjust
   service cards when it arrives
 - **Domain** — shop doesn't own one yet; when bought, add CNAME + Pages custom
   domain and update `js/quote.js` "Sent from" line
+- **Web3Forms key** — the quote form's "Send Request to Shop" button posts to
+  web3forms.com; register `krisfrombelloauto@gmail.com` there (free) and paste
+  the access key into `WEB3FORMS_KEY` in `js/quote.js`. Until then the button
+  degrades gracefully to the Email/Copy/Download fallbacks.
 - **TikTok** — add link when the shop joins
 
 ## Running locally
