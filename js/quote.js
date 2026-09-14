@@ -339,6 +339,27 @@
 
   /* ---------- Init ---------- */
 
+  // Preselect "Type of work" from ?service= links on the services page
+  // (e.g. quote.html?service=custom-paint) and confirm it visibly.
+  try {
+    var svc = new URLSearchParams(window.location.search).get("service");
+    if (svc) {
+      svc = svc.toLowerCase();
+      var sel = document.getElementById("serviceType");
+      var match = "";
+      Array.prototype.forEach.call(sel.options, function (opt) {
+        if (!opt.value || match) return;
+        var slug = opt.value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+        if (slug === svc || slug.indexOf(svc) === 0 || svc.indexOf(slug) === 0) match = opt.value;
+      });
+      if (match) {
+        sel.value = match;
+        document.getElementById("servicePresetName").textContent = match;
+        document.getElementById("servicePreset").hidden = false;
+      }
+    }
+  } catch (e) { /* older browsers: fall through, no preselection */ }
+
   // Deadline can't be in the past
   var deadline = document.getElementById("deadline");
   if (deadline) deadline.min = new Date().toISOString().slice(0, 10);

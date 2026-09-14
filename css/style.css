@@ -276,7 +276,7 @@ p { margin: 0 0 1em; }
 
 /* ---------- Sections ---------- */
 
-.section { padding: 72px 0; }
+.section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 .section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
 .section-head { max-width: 640px; margin-bottom: 38px; }
@@ -860,3 +860,30 @@ textarea { min-height: 110px; resize: vertical; }
 
 @media (max-width: 960px) { .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
 @media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Service families (services page) ---------- */
+.service-nav { display: flex; flex-wrap: wrap; gap: 10px; }
+
+a.chip { transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
+a.chip:hover { background: var(--red); color: #fff; border-color: var(--red); }
+
+.family-plain { max-width: 46rem; }
+
+.family-list {
+  margin: 0 0 22px;
+  padding-left: 20px;
+  color: var(--muted);
+  display: grid;
+  gap: 8px;
+}
+.family-list li::marker { color: var(--red); }
+
+.text-link { font-weight: 700; color: var(--red); }
+.text-link:hover { color: var(--red-dark); text-decoration: underline; }
+
+@media (min-width: 961px) {
+  .split--flip > .split-media { order: -1; }
+}
+
+/* sticky header must not cover anchor targets */
+section[id] { scroll-margin-top: 84px; }
