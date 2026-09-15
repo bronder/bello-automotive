@@ -815,18 +815,7 @@ textarea { min-height: 110px; resize: vertical; }
 
 .part-row .remove-part:hover { color: var(--accent); border-color: var(--accent); }
 
-/* Generated request preview */
-.request-preview {
-  width: 100%;
-  min-height: 220px;
-  background: #141110;
-  border-color: #40382e;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.8rem;
-  white-space: pre-wrap;
-}
-
-.send-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.send-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 18px; }
 
 .form-note { color: var(--muted); font-size: 0.85rem; margin-top: 16px; }
 
@@ -1144,7 +1133,6 @@ section[id] { scroll-margin-top: 92px; }
 [data-theme="light"] input[type="date"],
 [data-theme="light"] select,
 [data-theme="light"] textarea,
-[data-theme="light"] .request-preview,
 [data-theme="light"] .part-row .remove-part {
   background: #fffdf8;
   border-color: #d5c9b2;

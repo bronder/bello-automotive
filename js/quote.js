@@ -1,7 +1,7 @@
 /* ============================================================
    Bello Automotive — Quote Request form logic
-   Client-side only: builds a plain-text request, then lets the
-   customer email it to the shop, copy it, or download it.
+   Client-side only: builds a plain-text request and sends it
+   to the shop via Web3Forms, with a mailto fallback.
    ============================================================ */
 
 (function () {
@@ -18,7 +18,6 @@
   var form = document.getElementById("quoteForm");
   var partList = document.getElementById("partList");
   var addPartBtn = document.getElementById("addPart");
-  var generated = document.getElementById("generated");
   var statusEl = document.getElementById("formStatus");
 
   /* ---------- Dynamic "Parts / Work Needed" rows ---------- */
@@ -123,7 +122,6 @@
 
     text += "\n(Photos will be attached to the message or sent separately.)\n";
 
-    generated.value = text;
     return text;
   }
 
@@ -257,41 +255,6 @@
       "&body=" + encodeURIComponent(text);
   });
 
-  document.getElementById("copyBtn").addEventListener("click", function () {
-    if (!validateContactInfo()) return;
-    var text = buildRequest();
-    function done() { flashStatus("Request copied — paste it into a text or email.", true); }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text, done); });
-    } else {
-      fallbackCopy(text, done);
-    }
-  });
-
-  function fallbackCopy(text, done) {
-    generated.removeAttribute("readonly");
-    generated.select();
-    try { document.execCommand("copy"); done(); } catch (e) { flashStatus("Copy failed — select the text manually.", false); }
-    generated.setAttribute("readonly", "");
-    window.getSelection().removeAllRanges();
-  }
-
-  document.getElementById("downloadBtn").addEventListener("click", function () {
-    if (!validateContactInfo()) return;
-    var text = buildRequest();
-    var blob = new Blob([text], { type: "text/plain" });
-    var a = document.createElement("a");
-    var stamp = new Date().toISOString().slice(0, 10);
-    var who = val("custName").replace(/[^a-z0-9]+/gi, "-").toLowerCase();
-    a.href = URL.createObjectURL(blob);
-    a.download = "paint-quote-" + (who || "request") + "-" + stamp + ".txt";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(a.href);
-    flashStatus("Request file downloaded — email it to " + SHOP_EMAIL + " with your photos.", true);
-  });
-
   /* ---------- Direct send to the shop (Web3Forms) ---------- */
 
   var sendBtn = document.getElementById("sendBtn");
@@ -329,7 +292,7 @@
         buildRequest();
       })
       .catch(function () {
-        flashStatus("Couldn't send automatically — no worries: use Email, Copy, or Download below to send the request yourself.", false);
+        flashStatus("Couldn't send automatically — no worries: use the email option below, or call/text (508) 461-6432.", false);
       })
       .then(function () {
         sendBtn.disabled = false;
