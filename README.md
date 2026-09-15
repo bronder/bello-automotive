@@ -77,6 +77,34 @@ Welding & fabrication set (from the shop's Facebook photos, Sept 2026):
 Captions are descriptive of what the photos show — Kris should confirm/adjust
 (bike model, vehicle, metal type).
 
+## Design
+
+Dark "fire" theme derived from Kris's shop logo (`images/bello-logo-full.webp`,
+edited from `~/Downloads/BELLOP&P2.png` — 8970×12533 master, kept local).
+Palette lives in `:root` in `css/style.css`:
+
+- Canvas: warm near-blacks `#0f0d0b` / `#171411`, surfaces `#1c1815`
+- Ink: warm off-white `#f4efe6`, muted `#b5ab9d`
+- Accents: gold `#ffb92e` (links, eyebrows, chips, stars), fire gradient
+  `#ffe14f → #ffb020 → #ff7a1a → #e63217` reserved for the brand wordmark,
+  primary CTAs, and the CTA band (dark text `#241105` on top of it)
+
+Header brand is an HTML wordmark (Barlow Condensed + gradient text) so it stays
+crisp at nav size. The hero is an identity stage: the full emblem floats on a
+fire glow on the right (copy never overlaps it), with a hot-rod gradient stripe
+under the nav; the chameleon photo leads the Featured Work grid instead. The
+emblem is preloaded as the LCP element on the homepage. Favicon is a
+gradient-B SVG. `color-scheme: dark` keeps native controls (date picker,
+selects) legible.
+
+**Light/dark toggle:** the nav sun/moon button flips `data-theme` on `<html>`
+(dark is the brand default). Choice persists in `localStorage` under
+`bello-theme`; an inline snippet in each page's `<head>` applies it pre-paint
+so there's no flash. `js/theme.js` handles the switch and keeps the button's
+aria-label/pressed state and the `theme-color` meta in sync. The light theme
+swaps to warm paper tones with burnt-orange accents (bright gold fails
+contrast on white); the footer stays dark in both themes.
+
 ## Still open
 
 - **Photos & videos** — fabrication set added Sept 2026; still waiting on

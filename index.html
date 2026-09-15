@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f0d0b">
+  <script>try{if(localStorage.getItem("bello-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
   <title>Bello Automotive LLC — Collision, Custom Paint &amp; Fabrication | Webster, MA</title>
   <meta name="description" content="Bello Automotive LLC in Webster, MA — collision repair, custom motorcycle &amp; automotive paint, pinstriping, and welding &amp; fabrication. PPG-certified shop, lifetime paint warranty. Request a quote online.">
   <meta property="og:type" content="website">
@@ -15,10 +17,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="images/hero-chameleon-1280.webp"
-        imagesrcset="images/hero-chameleon-800.webp 800w, images/hero-chameleon-1280.webp 1280w, images/hero-chameleon-1920.webp 1920w"
-        imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" href="images/bello-logo-full.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js" defer></script>
 </head>
 <body>
 
@@ -28,14 +29,18 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="index.html">
-        <span class="brand-name">Bello<span class="accent"> · </span>Auto</span>
-        <span class="brand-tag">Automotive &amp; Motorcycle</span>
+        <span class="brand-name">Bello</span>
+        <span class="brand-tag">Paint &amp; Performance &middot; Webster, MA</span>
       </a>
       <nav class="nav-links">
         <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="gallery.html">Gallery</a>
         <a href="services.html">Services</a>
         <a href="contact.html">Contact</a>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to light theme">
+          <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg>
+          <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 14.2A8.6 8.6 0 0 1 9.8 3.4a8.6 8.6 0 1 0 10.8 10.8Z"/></svg>
+        </button>
         <a href="quote.html" class="nav-cta">Get a Quote</a>
       </nav>
     </div>
@@ -60,10 +65,9 @@
         </div>
         <p class="hero-badges">Family-Run Shop &middot; PPG-Certified &middot; House of Kolor Custom Paint &middot; Lifetime Paint Warranty</p>
       </div>
-      <div class="hero-media">
-        <img src="images/hero-chameleon-1280.webp"
-             srcset="images/hero-chameleon-800.webp 800w, images/hero-chameleon-1280.webp 1280w, images/hero-chameleon-1920.webp 1920w"
-             sizes="(min-width: 960px) 44vw, 100vw" width="1920" height="1080" alt="Color-shift chameleon paint job fresh out of the booth" fetchpriority="high">
+      <div class="hero-art">
+        <img src="images/bello-logo-full.webp" width="787" height="1100"
+             alt="Bello Paint &amp; Performance shop emblem — motorcycle, spray guns, and pinstripe artwork" fetchpriority="high">
       </div>
     </div>
   </section>
@@ -308,7 +312,7 @@
   </section>
 
   <!-- ================= CTA band ================= -->
-  <section class="section" style="padding-top:0;">
+  <section class="section" aria-label="Get started">
     <div class="container">
       <div class="cta-band">
         <div>
@@ -327,6 +331,7 @@
     <div class="container">
       <div class="footer-grid">
         <div>
+          <img class="footer-logo" src="images/bello-logo-full.webp" width="787" height="1100" alt="Bello Paint &amp; Performance — Webster, MA" loading="lazy">
           <h3>Bello Automotive LLC</h3>
           <p>Family-run automotive &amp; motorcycle shop in Webster, MA.
              Collision repair, custom paint, general repairs, and welding &amp;
