@@ -422,6 +422,84 @@ a.card:hover { transform: translateY(-2px); border-color: rgba(255, 185, 46, 0.5
 
 .split .lead { color: var(--ink); font-size: 1.04rem; }
 
+/* Meet-Kris collage: a second photo overlaps the first — reads assembled,
+   not templated */
+.about-media { position: relative; }
+.about-media img { width: 100%; }
+.about-media img + img {
+  width: 58%;
+  justify-self: end;
+  margin-top: -18%;
+  margin-right: 6%;
+  border: 5px solid var(--bg);
+  border-radius: var(--radius);
+}
+
+/* ---------- Featured work: broken grid ---------- */
+/* First tile spans 2x2, last spans 2 — a hero shot instead of a flat wall */
+.featured-grid { grid-template-columns: repeat(4, 1fr); }
+.featured-grid .card:first-child { grid-column: span 2; grid-row: span 2; }
+.featured-grid .card:last-child { grid-column: span 2; }
+
+/* ---------- Testimonials ---------- */
+/* Amy's line leads as a display quote; the rest sit staggered, not boxed */
+
+.testimonial-feature { margin: 0 0 40px; }
+
+.testimonial-feature blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.6vw, 2.7rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ink);
+  max-width: 24ch;
+}
+
+.testimonial-feature blockquote::before {
+  content: "\201C";
+  color: var(--accent);
+}
+
+.testimonial-feature blockquote::after {
+  content: "\201D";
+  color: var(--accent);
+}
+
+.testimonial-feature figcaption {
+  margin-top: 12px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.testi-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 22px; }
+
+.testimonial blockquote {
+  margin: 0 0 14px;
+  font-size: 0.94rem;
+  color: var(--ink);
+  flex: 1;
+}
+
+.testimonial .stars {
+  color: var(--accent);
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.testimonial figcaption {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* ---------- Gallery ---------- */
 
 .gallery-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
@@ -531,6 +609,16 @@ a.card:hover { transform: translateY(-2px); border-color: rgba(255, 185, 46, 0.5
   font-weight: 600;
 }
 
+.lightbox .lb-count {
+  position: absolute;
+  bottom: 26px;
+  left: 20px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
 .lightbox .lb-close {
   position: absolute;
   top: 14px;
@@ -579,6 +667,7 @@ a.card:hover { transform: translateY(-2px); border-color: rgba(255, 185, 46, 0.5
 @media (max-width: 640px) {
   .lightbox .lb-prev { left: 8px; }
   .lightbox .lb-next { right: 8px; }
+  .lightbox .lb-count { top: 24px; bottom: auto; left: 16px; }
 }
 
 /* ---------- Process steps ---------- */
@@ -790,7 +879,7 @@ textarea { min-height: 110px; resize: vertical; }
   border-radius: 12px;
   background: rgba(255, 185, 46, 0.08);
   border: 1px solid rgba(255, 185, 46, 0.35);
-  font-size: 1.1rem;
+  color: var(--accent);
 }
 
 .info-list strong { display: block; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 2px; }
@@ -827,30 +916,6 @@ textarea { min-height: 110px; resize: vertical; }
 }
 
 .quote-facts span::before { content: "\2713"; color: var(--green); margin-right: 8px; }
-
-/* ---------- Testimonials ---------- */
-
-.testimonial blockquote {
-  margin: 0 0 14px;
-  font-size: 0.94rem;
-  color: var(--ink);
-  flex: 1;
-}
-
-.testimonial .stars {
-  color: var(--accent);
-  font-size: 0.9rem;
-  letter-spacing: 3px;
-  margin-bottom: 10px;
-}
-
-.testimonial figcaption {
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
 
 /* ---------- Footer ---------- */
 
@@ -912,6 +977,10 @@ textarea { min-height: 110px; resize: vertical; }
   .split, .contact-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .featured-grid .card:first-child,
+  .featured-grid .card:last-child { grid-row: auto; }
+  .featured-grid .card:last-child { grid-column: span 2; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -926,6 +995,10 @@ textarea { min-height: 110px; resize: vertical; }
   .form-card { padding: 24px 20px 28px; }
   .site-header { backdrop-filter: none; background: var(--bg); }
   .footer-logo { height: 170px; }
+  .featured-grid .card:first-child,
+  .featured-grid .card:last-child { grid-column: auto; grid-row: auto; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .about-media img + img { width: 70%; margin-top: -12%; margin-right: 0; border-width: 4px; }
 }
 
 /* Respect users who prefer reduced motion (WCAG 2.3.3) */

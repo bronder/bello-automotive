@@ -4,13 +4,24 @@
 3 screenshot-sourced picks (p0392, p0733, p0816) were removed — they were
 phone/Instagram screenshots, not shop photos.
 
+**Caption-run dedupe (Sept 2026):** 82 tiles whose captions repeated 3+ times in a row
+are hidden in the gallery via the `hidden` attribute (best 2 frames kept per set —
+chosen visually). The WebPs are all still shipped. When Kris's caption pass turns
+sets into named jobs, remove `hidden` from `<figure class="gallery-item" hidden …>`
+for any frames worth showing again.
+
+**Captions removed from tiles (Sept 2026):** the draft descriptions proved inaccurate,
+so gallery tiles and the lightbox now show only the filter-category label. This table's
+draft captions remain as reference for Kris's pass — correct them here, then restore
+corrected text to the tiles.
+
 Captions are drafts — Kris should correct specifics (bike models, vehicles, customers).
 
 | WebP | Source | Caption | Filters |
 |---|---|---|---|
 | shop-p0005.webp | 3f4efcb5e9fe3900be1d5897010bc406.jpeg | (shop shot — for About section, not gallery) | — |
-| p0009.webp | 69162352613__0E886409-8D26-4A1F-86D6-A47A55D0640E.JPEG | Custom Paint — Custom paint — from the shop | candy |
-| p0020.webp | 785E70EE-8116-4F8D-B27D-95458E01396E-1.jpg | Custom Paint — Custom paint — from the shop | candy |
+| p0009.webp | 69162352613__0E886409-8D26-4A1F-86D6-A47A55D0640E.JPEG | Custom Paint — Red airbrushed mural — fairing | candy |
+| p0020.webp | 785E70EE-8116-4F8D-B27D-95458E01396E-1.jpg | Custom Paint — Red airbrushed mural — lid detail | candy |
 | shop-p0025.webp | image000000.jpg | (shop shot — for About section, not gallery) | — |
 | p0026.webp | IMG_0090.JPEG | Custom Paint — Silver metallic — fenders | candy |
 | p0029.webp | IMG_0137.JPEG | Custom Paint — Silver metallic — fenders | candy |
