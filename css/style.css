@@ -548,6 +548,39 @@ a.card:hover { transform: translateY(-2px); border-color: rgba(255, 185, 46, 0.5
 
 .lightbox .lb-close:hover { color: var(--accent-soft); border-color: var(--accent-soft); }
 
+/* Prev / next controls */
+.lightbox .lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 52px;
+  min-height: 52px;
+  font-size: 2rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(28, 24, 21, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.lightbox .lb-prev { left: 16px; }
+.lightbox .lb-next { right: 16px; }
+
+.lightbox .lb-nav:hover { color: var(--accent-soft); border-color: var(--accent-soft); }
+
+.lightbox .lb-nav:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.lightbox .lb-nav:disabled:hover { color: #fff; border-color: rgba(255, 255, 255, 0.35); }
+
+@media (max-width: 640px) {
+  .lightbox .lb-prev { left: 8px; }
+  .lightbox .lb-next { right: 8px; }
+}
+
 /* ---------- Process steps ---------- */
 
 .steps { counter-reset: step; display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }

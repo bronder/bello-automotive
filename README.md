@@ -64,7 +64,7 @@ Welding & fabrication set (from the shop's Facebook photos, Sept 2026):
 |------|------|
 | `fab-tig-welding.jpg` | Kris TIG welding at the bench |
 | `fab-stacked-dimes.jpg` | Stacked-dime TIG beads on stainless pipe |
-| `fab-flange-weld.jpg` | Flange-to-pipe TIG fillet |
+| `fab-flange-weld.jpg` | TIG fillet weld around a pipe flange |
 | `fab-cone-transition.jpg` | Hand-built cone transition |
 | `fab-intake-piping.jpg` | Fabricated intake piping, tacked on the bench |
 | `fab-honda-header.jpg` | Custom header/collector on a Honda VTEC build |
@@ -73,6 +73,13 @@ Welding & fabrication set (from the shop's Facebook photos, Sept 2026):
 | `fab-kawasaki-exhaust.jpg` | Custom exhaust mid-build, Kawasaki track bike |
 | `fab-muffler-before-after.jpg` | Crushed stock can vs. hand-built carbon replacement |
 | `fab-cast-elbow-repro.jpg` | Cracked cast elbow vs. fabricated aluminum replacement |
+
+**Sept 2026 expansion:** 233 photos from Kris's iCloud drop (`p<id>.webp`),
+adding a Collision & Repair filter plus candy/graphics/color-shift/restoration
+work. Mapping of WebP → source file → draft caption lives in
+[images/additions-2026-09.md](images/additions-2026-09.md); captions need
+Kris's pass (bike models, vehicles). Five shop shots (`shop-p*.webp`) are
+processed for a future About-section refresh.
 
 Captions are descriptive of what the photos show — Kris should confirm/adjust
 (bike model, vehicle, metal type).
@@ -107,9 +114,12 @@ contrast on white); the footer stays dark in both themes.
 
 ## Still open
 
-- **Photos & videos** — fabrication set added Sept 2026; still waiting on
-  collision/repair photos and video content; captions may need Kris's input
-  (bike model, vehicle, materials)
+- **Photos & videos** — Sept 2026 iCloud drop added 236 gallery photos incl.
+  collision/repair (see `images/additions-2026-09.md`); 33 real video clips
+  (5s–113s beauty pans) remain unused — candidates for social embeds. The rest
+  of the ~1,570-file drop is archived locally (711 files are Live Photo MOV
+  stubs). Captions on the new photos are drafts — Kris should correct
+  specifics (bike model, vehicle, materials)
 - **Service detail** — Kris promised better details per service; expand the
   service cards when it arrives
 - **Domain** — shop doesn't own one yet; when bought, add CNAME + Pages custom
