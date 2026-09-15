@@ -140,3 +140,9 @@ Any static server works:
 cd bello-automotive && python -m http.server 8080
 # or: npx serve .
 ```
+
+## Deploy note
+
+When changing `css/style.css` or any `js/*.js`, bump the `?v=` query on those asset
+references in the HTML pages (search for `v=2026`) so returning visitors do not get
+stale cached assets from GitHub Pages (10-minute CDN + browser caching).
