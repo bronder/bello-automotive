@@ -1064,7 +1064,7 @@ textarea { min-height: 110px; resize: vertical; }
   .featured-grid .card:first-child,
   .featured-grid .card:last-child { grid-column: auto; grid-row: auto; }
   .testi-grid { grid-template-columns: 1fr; }
-  .hero .kicker { text-align: center; padding: 6px 16px; }
+  .hero .kicker { text-align: left; padding: 6px 12px; margin-left: -12px; }
   .kicker-loc { display: block; }
   .kicker-loc::before { content: none; }
   .about-media img + img { width: 70%; margin-top: -12%; margin-right: 0; border-width: 4px; }
