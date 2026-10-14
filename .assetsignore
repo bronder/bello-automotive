@@ -1,0 +1,9 @@
+# Not part of the published site.
+# .git must be excluded: the pack file exceeds the 25 MiB per-asset limit.
+.git/
+.github/
+.descs/
+tools/
+_photo-review.html
+gallery-admin.html
+README.md
