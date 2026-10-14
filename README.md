@@ -10,8 +10,11 @@ repairs, welding & fabrication, pinstriping, OEM/insurance repairs. Paint is
 paint-heavy only because that's the photography we have so far; Kris is
 sending photos of all services.
 
-**Live:** https://bronder.github.io/bello-automotive/ — deploys automatically
-on every push to `main` via [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+**Live:** https://belloautomotive.com/ — deploys automatically on every push
+to `main` via Cloudflare (Git-connected Worker with static assets;
+`.assetsignore` keeps `.git` and internal tooling out of the upload).
+Legacy mirror: https://bronder.github.io/bello-automotive/ via
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml).
 
 ## Shop facts (confirmed by Kris, Sept 2026)
 
